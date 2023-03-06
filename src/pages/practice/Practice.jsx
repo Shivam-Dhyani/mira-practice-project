@@ -29,12 +29,15 @@ const CustomDataGrid = styled(DataGrid)`
   .MuiDataGrid-row {
     background-color: rgba(27, 36, 48, 0.07);
     margin: 1px 0;
-   
+    border-left: 5px solid green;
+  }
+  .MuiDataGrid-row:nth-child(even) {
+    border-left: 5px solid #962222;
+  }
 
-  .MuiDataGrid-row:nth-child(2n) {
-      border-left : 5px solid #22965E;
-    }
-    
+  .MuiDataGrid-row:nth-child(odd) {
+    border-left: 5px solid #22965e;
+  }
 `;
 
 // const newColumns = [
