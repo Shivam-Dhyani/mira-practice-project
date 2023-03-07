@@ -1,12 +1,19 @@
 import styled from "@emotion/styled";
+import { Add, Search } from "@mui/icons-material";
+
 import {
   Breadcrumbs as MuiBreadcrumbs,
   Divider as MuiDivider,
   Typography,
   Box,
+  InputBase,
+  Grid,
+  Button,
+  TextField,
+  InputAdornment,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { spacing } from "@mui/system";
+import { alpha, spacing } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { Helmet } from "react-helmet-async";
 import { Link, NavLink } from "react-router-dom";
@@ -39,6 +46,59 @@ const CustomDataGrid = styled(DataGrid)`
     border-left: 5px solid #22965e;
   }
 `;
+
+const CustomTextField = styled(TextField)({
+  backgroundColor: "#EFEFF0",
+  width: "200px",
+  "& input": {
+    padding: "9px 16px",
+  },
+  "& fieldset": {
+    border: "none",
+  },
+});
+
+const CustomSearch = styled("span")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      // "&:focus": {
+      //   width: "20ch",
+      // },
+    },
+  },
+}));
 
 // const newColumns = [
 //   { field: "name", headerName: "Name" },
@@ -180,12 +240,12 @@ const rows = [
 
 function DataGridDemo() {
   return (
-    <Box sx={{ height: 620, width: "100%" }}>
+    <Box sx={{ height: 600, width: "100%" }}>
       <CustomDataGrid
         rows={rows}
         columns={columns}
-        pageSize={7}
-        rowsPerPageOptions={[7]}
+        pageSize={8}
+        rowsPerPageOptions={[8]}
         experimentalFeatures={{ newEditingApi: true }}
         disableSelectionOnClick
         disableColumnMenu
@@ -198,18 +258,44 @@ function DataGridDemo() {
 
 const Practice = () => {
   return (
-    <>
-      <Helmet title="Blank" />
-      <Typography variant="h3" gutterBottom display="inline">
-        Agents
-      </Typography>
+    <div>
+      <Helmet title="Practice" />
+      <Grid container justifyContent="space-between">
+        <Grid item xs={8}>
+          <Typography variant="h3" gutterBottom display="inline">
+            Agents
+          </Typography>
 
-      <Breadcrumbs aria-label="Breadcrumb" mt={2}>
-        <Link component={NavLink} to="/">
-          Pages
-        </Link>
-        <Typography>Agents</Typography>
-      </Breadcrumbs>
+          <Breadcrumbs aria-label="Breadcrumb" mt={2}>
+            <Link component={NavLink} to="/">
+              Pages
+            </Link>
+            <Typography>Agents</Typography>
+          </Breadcrumbs>
+        </Grid>
+        <Grid item xs={2.6}>
+          <Grid container justifyContent="space-between">
+            <Grid item>
+              <Button mr={2} variant="contained" color="primary">
+                <Add />
+                New Agent
+              </Button>
+            </Grid>
+            <Grid item>
+              <CustomTextField
+                placeholder="Search"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Search />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
 
       <Divider my={2} mb={4} />
 
@@ -219,7 +305,7 @@ const Practice = () => {
           <DataGridDemo />
         </Grid2>
       </Grid2>
-    </>
+    </div>
   );
 };
 
