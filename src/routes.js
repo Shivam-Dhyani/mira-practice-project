@@ -83,7 +83,8 @@ import Landing from "./pages/presentation/Landing";
 
 // Protected routes
 import ProtectedPage from "./pages/protected/ProtectedPage";
-import Practice from "./pages/practice/Practice";
+import Agents from "./pages/agents/Agents";
+import AddNewAgents from "./pages/addNewAgents/AddNewAgents";
 
 // Dashboard components
 const Default = async(() => import("./pages/dashboards/Default"));
@@ -167,8 +168,17 @@ const routes = [
         element: <Blank />,
       },
       {
-        path: "practice",
-        element: <Practice />,
+        path: "agents",
+        children: [
+          {
+            path: "",
+            element: <Agents />,
+          },
+          {
+            path: "addNewAgents",
+            element: <AddNewAgents />,
+          },
+        ],
       },
     ],
   },

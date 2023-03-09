@@ -19,11 +19,12 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { alpha, spacing } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { Helmet } from "react-helmet-async";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import PrimaryLogo from "../../assests/primary-logo.png";
 import SecondaryLogo from "../../assests/secondary-logo.png";
 import LifeInsuranceChip from "../../assests/life-insurance-chip.png";
 import AnnuityInsuranceChip from "../../assests/annuity-insurance-chip.png";
+import KebabMenuIcon from "../../assests/kebab-menu-icon.png";
 
 const Divider = styled(MuiDivider)(spacing);
 
@@ -304,77 +305,7 @@ function Checkboxes() {
   );
 }
 
-// const columns = [
-//   {
-//     field: "id",
-//     headerName: "ID",
-//     width: 340,
-//     align: "center",
-//     headerAlign: "center",
-//   },
-//   {
-//     field: "firstName",
-//     headerName: "First name",
-//     width: 340,
-//   },
-//   {
-//     field: "lastName",
-//     headerName: "Last name",
-//     width: 340,
-//   },
-//   {
-//     field: "age",
-//     headerName: "Age",
-//     type: "number",
-//     width: 340,
-//     align: "left",
-//     headerAlign: "left",
-//   },
-// ];
-
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  {
-    id: 2,
-    lastName: "Lannister",
-    firstName: "Cersei",
-    age: 42,
-  },
-  {
-    id: 3,
-    lastName: "Lannister",
-    firstName: "Jaime",
-    age: 45,
-  },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  {
-    id: 5,
-    lastName: "Targaryen",
-    firstName: "Daenerys",
-    age: 23,
-  },
-  {
-    id: 6,
-    lastName: "Melisandre",
-    firstName: "ITTS",
-    age: 150,
-  },
-  {
-    id: 7,
-    lastName: "Clifford",
-    firstName: "Ferrara",
-    age: 44,
-  },
-  {
-    id: 8,
-    lastName: "Frances",
-    firstName: "Rossini",
-    age: 36,
-  },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
-
-const newColumns = [
+const columns = [
   {
     field: "logo",
     headerName: "",
@@ -392,10 +323,18 @@ const newColumns = [
   { field: "lifeTemplate", headerName: "Life Template", width: 180 },
   { field: "annuityTemplate", headerName: "Annuity Template", width: 180 },
   { field: "createdDate", headerName: "Created Date", width: 170 },
-  { field: "ndaStatus", headerName: "NDA Status", width: 400 },
+  { field: "ndaStatus", headerName: "NDA Status", width: 210 },
+  {
+    field: "kebabMenuIcon",
+    headerName: "",
+    width: 10,
+    renderCell: (params) => (
+      <img src={params.value} style={{ cursor: "pointer" }} />
+    ),
+  },
 ];
 
-const newRows = [
+const rows = [
   {
     id: 1,
     logo: PrimaryLogo,
@@ -406,6 +345,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Signed",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 2,
@@ -417,6 +357,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Sent at 30/12/2022 18:44:22",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 3,
@@ -428,6 +369,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Signed",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 4,
@@ -439,6 +381,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Sent at 30/12/2022 18:44:22",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 5,
@@ -450,6 +393,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Signed",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 6,
@@ -461,6 +405,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Sent at 30/12/2022 18:44:22",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 7,
@@ -472,6 +417,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Signed",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 8,
@@ -483,6 +429,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Sent at 30/12/2022 18:44:22",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 9,
@@ -494,6 +441,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Signed",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 10,
@@ -505,6 +453,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Sent at 30/12/2022 18:44:22",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 11,
@@ -516,6 +465,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Signed",
+    kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 12,
@@ -527,6 +477,7 @@ const newRows = [
     annuityTemplate: "Platinum",
     createdDate: "01/06/2023",
     ndaStatus: "Sent at 30/12/2022 18:44:22",
+    kebabMenuIcon: KebabMenuIcon,
   },
 ];
 
@@ -534,8 +485,8 @@ function DataGridDemo() {
   return (
     <Box sx={{ height: 600, width: "100%" }}>
       <CustomDataGrid
-        rows={newRows}
-        columns={newColumns}
+        rows={rows}
+        columns={columns}
         pageSize={8}
         rowsPerPageOptions={[8]}
         experimentalFeatures={{ newEditingApi: true }}
@@ -548,12 +499,12 @@ function DataGridDemo() {
   );
 }
 
-const Practice = () => {
+const Agents = () => {
+  const navigate = useNavigate();
   return (
-    <div>
-      <Helmet title="Practice" />
-      <img src={PrimaryLogo} />
-      <img src={SecondaryLogo} />
+    <>
+      <Helmet title="Agents" />
+
       {/* Navigation Section */}
       <Grid2 container justifyContent="space-between">
         <Grid2 item xs={4}>
@@ -581,7 +532,12 @@ const Practice = () => {
         <Grid2 item xs={2.6} mt={3}>
           <Grid2 container justifyContent="space-between">
             <Grid2 item>
-              <Button mr={2} variant="contained" color="primary">
+              <Button
+                mr={2}
+                variant="contained"
+                color="primary"
+                onClick={() => navigate("addNewAgents")}
+              >
                 <Add />
                 New Agent
               </Button>
@@ -611,8 +567,8 @@ const Practice = () => {
           <DataGridDemo />
         </Grid2>
       </Grid2>
-    </div>
+    </>
   );
 };
 
-export default Practice;
+export default Agents;
