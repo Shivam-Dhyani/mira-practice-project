@@ -7,6 +7,7 @@ import {
   Divider as MuiDivider,
   Typography,
   Box,
+  Grid,
   InputBase,
   Button,
   TextField,
@@ -15,16 +16,16 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@mui/material";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+
 import { alpha, spacing } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { Helmet } from "react-helmet-async";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import PrimaryLogo from "../../assests/primary-logo.png";
-import SecondaryLogo from "../../assests/secondary-logo.png";
-import LifeInsuranceChip from "../../assests/life-insurance-chip.png";
-import AnnuityInsuranceChip from "../../assests/annuity-insurance-chip.png";
-import KebabMenuIcon from "../../assests/kebab-menu-icon.png";
+import PrimaryLogo from "../../assets/primary-logo.png";
+import SecondaryLogo from "../../assets/secondary-logo.png";
+import LifeInsuranceChip from "../../assets/life-insurance-chip.png";
+import AnnuityInsuranceChip from "../../assets/annuity-insurance-chip.png";
+import KebabMenuIcon from "../../assets/kebab-menu-icon.png";
 
 const Divider = styled(MuiDivider)(spacing);
 
@@ -158,8 +159,8 @@ function CheckboxesGroup() {
     //     </Paper>
     //   </CardContent>
     // </Card>
-    <Grid2 container direction="row">
-      <Grid2 item>
+    <Grid container direction="row">
+      <Grid item>
         <Typography
           variant="outlined"
           sx={{ color: "#7A7A7A" }}
@@ -168,8 +169,8 @@ function CheckboxesGroup() {
         >
           NDA status
         </Typography>
-      </Grid2>
-      <Grid2 item>
+      </Grid>
+      <Grid item>
         <FormGroup>
           <FormControlLabel
             control={
@@ -183,9 +184,9 @@ function CheckboxesGroup() {
             label="Signed"
           />
         </FormGroup>
-      </Grid2>
+      </Grid>
 
-      <Grid2 item>
+      <Grid item>
         <FormGroup>
           <FormControlLabel
             control={
@@ -199,8 +200,8 @@ function CheckboxesGroup() {
             label="Not Signed"
           />
         </FormGroup>
-      </Grid2>
-    </Grid2>
+      </Grid>
+    </Grid>
     // <FormControl component="fieldset" variant="standard">
     //   <FormLabel component="legend">Assign responsibility</FormLabel>
     //   <FormGroup>
@@ -238,8 +239,8 @@ function Checkboxes() {
   const { life, annuity } = state;
 
   return (
-    <Grid2 container direction="row">
-      <Grid2 item>
+    <Grid container direction="row">
+      <Grid item>
         <Typography
           variant="outlined"
           sx={{ color: "#7A7A7A" }}
@@ -248,8 +249,8 @@ function Checkboxes() {
         >
           Type
         </Typography>
-      </Grid2>
-      <Grid2 item>
+      </Grid>
+      <Grid item>
         <FormGroup>
           <FormControlLabel
             control={
@@ -263,9 +264,9 @@ function Checkboxes() {
             label="Life"
           />
         </FormGroup>
-      </Grid2>
+      </Grid>
 
-      <Grid2 item>
+      <Grid item>
         <FormGroup>
           <FormControlLabel
             control={
@@ -279,8 +280,8 @@ function Checkboxes() {
             label="Annuity"
           />
         </FormGroup>
-      </Grid2>
-    </Grid2>
+      </Grid>
+    </Grid>
     // <FormControl component="fieldset" variant="standard">
     //   <FormLabel component="legend">Assign responsibility</FormLabel>
     //   <FormGroup>
@@ -310,7 +311,10 @@ const columns = [
     field: "logo",
     headerName: "",
     width: 50,
-    renderCell: (params) => <img src={params.value} />,
+    renderCell: (params) => {
+      console.log("Logo Params : ", params);
+      return <img src={params.value} />;
+    },
   },
   { field: "name", headerName: "Name", width: 190 },
   { field: "email", headerName: "Email", width: 300 },
@@ -506,8 +510,8 @@ const Agents = () => {
       <Helmet title="Agents" />
 
       {/* Navigation Section */}
-      <Grid2 container justifyContent="space-between">
-        <Grid2 item xs={4}>
+      <Grid container justifyContent="space-between">
+        <Grid item xs={4}>
           <Typography variant="h3" gutterBottom display="inline">
             Agents
           </Typography>
@@ -518,20 +522,20 @@ const Agents = () => {
             </Link>
             <Typography>Agents</Typography>
           </Breadcrumbs>
-        </Grid2>
-        <Grid2 item xs={5} mt={4} direction="row">
-          <Grid2 container direction="row">
-            <Grid2 item>
+        </Grid>
+        <Grid item xs={5} mt={4} direction="row">
+          <Grid container direction="row">
+            <Grid item>
               <CheckboxesGroup />
-            </Grid2>
-            <Grid2 item>
+            </Grid>
+            <Grid item>
               <Checkboxes />
-            </Grid2>
-          </Grid2>
-        </Grid2>
-        <Grid2 item xs={2.6} mt={3}>
-          <Grid2 container justifyContent="space-between">
-            <Grid2 item>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={2.6} mt={3}>
+          <Grid container justifyContent="space-between">
+            <Grid item>
               <Button
                 mr={2}
                 variant="contained"
@@ -541,8 +545,8 @@ const Agents = () => {
                 <Add />
                 New Agent
               </Button>
-            </Grid2>
-            <Grid2 item>
+            </Grid>
+            <Grid item>
               <CustomTextField
                 placeholder="Search"
                 InputProps={{
@@ -553,20 +557,20 @@ const Agents = () => {
                   ),
                 }}
               />
-            </Grid2>
-          </Grid2>
-        </Grid2>
-      </Grid2>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
 
       <Divider my={2} mb={4} />
 
       {/* Agent Data Table Section */}
-      <Grid2 container spacing={2}>
-        <Grid2 item xs={12}></Grid2>
-        <Grid2 item xs={12} sx={{ backgroundColor: "#FFFFFF" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}></Grid>
+        <Grid item xs={12} sx={{ backgroundColor: "#FFFFFF" }}>
           <DataGridDemo />
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
     </>
   );
 };
