@@ -14,7 +14,6 @@ import {
   Sliders,
   Users,
 } from "react-feather";
-import Hello from "../../assests/layout.png";
 
 const pagesSection = [
   {
