@@ -58,7 +58,7 @@ const CustomDataGrid = styled(DataGrid)`
 
 const CustomTextField = styled(TextField)({
   backgroundColor: "#EFEFF0",
-  width: "200px",
+  width: "230px",
   "& input": {
     padding: "9px 16px",
   },
@@ -533,7 +533,7 @@ const Agents = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={2.6} mt={3}>
+        <Grid item xs={2.8} mt={3}>
           <Grid container justifyContent="space-between">
             <Grid item>
               <Button
@@ -565,8 +565,7 @@ const Agents = () => {
       <Divider my={2} mb={4} />
 
       {/* Agent Data Table Section */}
-      <Grid container spacing={2}>
-        <Grid item xs={12}></Grid>
+      <Grid container spacing={2} mt={1}>
         <Grid item xs={12} sx={{ backgroundColor: "#FFFFFF" }}>
           <DataGridDemo />
         </Grid>

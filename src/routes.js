@@ -85,6 +85,8 @@ import Landing from "./pages/presentation/Landing";
 import ProtectedPage from "./pages/protected/ProtectedPage";
 import Agents from "./pages/agents/Agents";
 import AddNewAgents from "./pages/addNewAgents/AddNewAgents";
+import Carriers from "./pages/carriers/Carriers";
+import CarriersView from "./pages/carriersView/CarriersView";
 
 // Dashboard components
 const Default = async(() => import("./pages/dashboards/Default"));
@@ -177,6 +179,24 @@ const routes = [
           {
             path: "addNewAgents",
             element: <AddNewAgents />,
+          },
+        ],
+      },
+      {
+        path: "carriers",
+        children: [
+          {
+            path: "",
+            element: <Carriers />,
+          },
+          {
+            path: "view",
+            children: [
+              {
+                path: ":viewID",
+                element: <CarriersView />,
+              },
+            ],
           },
         ],
       },
