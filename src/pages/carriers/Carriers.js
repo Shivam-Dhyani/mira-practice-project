@@ -160,29 +160,29 @@ function Checkboxes() {
   );
 }
 
-function CustomPagination() {
-  //   const page = useGridSelector(apiRef, gridPageSelector);
+// function CustomPagination() {
+//   //   const page = useGridSelector(apiRef, gridPageSelector);
 
-  return (
-    <Pagination
-      color="primary"
-      variant="outlined"
-      shape="rounded"
-      page={1}
-      count={8}
-      // @ts-expect-error
-      renderItem={(props2) => <PaginationItem {...props2} disableRipple />}
-      // onChange={(event, value) => apiRef.current.setPage(value - 1)}
-    />
-  );
-}
+//   return (
+//     <Pagination
+//       color="primary"
+//       variant="outlined"
+//       shape="rounded"
+//       page={1}
+//       count={8}
+//       // @ts-expect-error
+//       renderItem={(props2) => <PaginationItem {...props2} disableRipple />}
+//       // onChange={(event, value) => apiRef.current.setPage(value - 1)}
+//     />
+//   );
+// }
 
 const columns = [
   {
     headerName: "",
     width: 60,
   },
-  { field: "name", headerName: "Name", width: 240, sortable: "false" },
+  { field: "name", headerName: "Name", width: 230, sortable: "false" },
   {
     field: "type",
     headerName: "Type",
@@ -280,17 +280,18 @@ function DataGridDemo() {
       <CustomDataGrid
         rows={rows}
         columns={columns}
-        pageSize={8}
-        rowsPerPageOptions={[8]}
+        pageSize={12}
+        rowsPerPageOptions={[12]}
         experimentalFeatures={{ newEditingApi: true }}
         disableSelectionOnClick
         // disableColumnMenu
         // disableColumnFilter
         // disableColumnSelector
         disableSorting
-        slots={{
-          pagination: CustomPagination,
-        }}
+
+        // slots={{
+        //   pagination: CustomPagination,
+        // }}
       />
     </Box>
   );
@@ -304,7 +305,7 @@ const Carriers = () => {
 
       {/* Navigation Section */}
       <Grid container justifyContent="space-between">
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Typography variant="h3" gutterBottom display="inline">
             Carriers
           </Typography>
@@ -316,15 +317,18 @@ const Carriers = () => {
             <Typography>Carriers</Typography>
           </Breadcrumbs>
         </Grid>
-        <Grid item xs={5} mt={4} direction="row">
+        <Grid item lg={5} mt={4} direction="row">
           <Grid container direction="row">
             <Grid item>
               <Checkboxes />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={2.6} mt={3}>
-          <Grid container justifyContent="flex-end">
+        <Grid item xs={12} md={2.6} mt={3}>
+          <Grid
+            container
+            sx={{ justifyContent: { xs: "center", md: "flex-end" } }}
+          >
             <Grid item>
               <CustomTextField
                 placeholder="Search"

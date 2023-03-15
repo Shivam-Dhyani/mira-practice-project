@@ -30,6 +30,24 @@ const CustomTextField = styled(TextField)({
   },
 });
 
+const CustomLabelTypography = styled(Typography)`
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #7a7a7a;
+`;
+
+const CustomInputTypography = styled(Typography)`
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #000000;
+`;
+
 const CarrierDetailSection = () => (
   <Grid
     item
@@ -43,67 +61,83 @@ const CarrierDetailSection = () => (
     <Grid container>
       {/* Left Column */}
       <Grid item xs={9.4}>
-        <Grid container justifyContent="space-between" paddingRight="15px">
+        <Grid container justifyContent="space-between" paddingRight={4}>
           <Grid item xs={5}>
             <Grid container>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Cut Off
+                    <CustomLabelTypography>Cut Off</CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    Friday
+                    <CustomInputTypography>Friday</CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Release Date
+                    <CustomLabelTypography>Release Date</CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    Tuesday
+                    <CustomInputTypography>Tuesday</CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Min Ck/Min EFT
+                    <CustomLabelTypography>
+                      Min Ck/Min EFT
+                    </CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    Check: $50: EPF: $50
+                    <CustomInputTypography>
+                      Check: $50: EPF: $50
+                    </CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Commissionable Policy
+                    <CustomLabelTypography>
+                      Commissionable Policy
+                    </CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    Over $250K varies ~$65
+                    <CustomInputTypography>
+                      Over $250K varies ~$65
+                    </CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Changeback Schedue
+                    <CustomLabelTypography>
+                      Changeback Schedue
+                    </CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    100% Month 1-6 50% Month 7-12 CB to agent BA 40$ bonus will
-                    be CB to us
+                    <CustomInputTypography>
+                      100% Month 1-6 50% Month 7-12 CB to agent BA 40$ bonus
+                      will be CB to us
+                    </CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Advancement Cap
+                    <CustomLabelTypography>
+                      Advancement Cap
+                    </CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    $5,000 per policy
+                    <CustomInputTypography>
+                      $5,000 per policy
+                    </CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
@@ -111,34 +145,42 @@ const CarrierDetailSection = () => (
           </Grid>
           <Grid item xs={5}>
             <Grid container>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Commission Contact
+                    <CustomLabelTypography>
+                      Commission Contact
+                    </CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    800-255-2702
+                    <CustomInputTypography>800-255-2702</CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Commission Grids Dated
+                    <CustomLabelTypography>
+                      Carrier Grids Dated
+                    </CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    2019-07-01To07:00:00.000z
+                    <CustomInputTypography>
+                      2019-07-01To07:00:00.000z
+                    </CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sx={{ width: "100%", padding: "10px 0" }}>
+              <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
                   <Grid item xs={4} color="#7A7A7A">
-                    Other Notes
+                    <CustomLabelTypography>Other Notes</CustomLabelTypography>
                   </Grid>
                   <Grid item xs={8}>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    <CustomInputTypography>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </CustomInputTypography>
                   </Grid>
                 </Grid>
               </Grid>
@@ -150,6 +192,13 @@ const CarrierDetailSection = () => (
           justifyContent="center"
           color="#1565C0"
           paddingTop="15px"
+          sx={{
+            fontFamily: "Nunito",
+            fontStyle: "normal",
+            fontWeight: "600",
+            fontSize: "13px",
+            lineHeight: "18px",
+          }}
         >
           All % are subject to change. This grid does not serve as a binding
           contract. Please contact your &BA recruiter with any questions you may
@@ -178,50 +227,71 @@ const CarrierDetailSection = () => (
           Internal Only Info
         </Grid>
         <Grid container flexDirection="column" rowSpacing={4}>
-          <Grid item>
+          <Grid item xs={12}>
             <Grid container flexDirection="column">
               <Grid item color="#7A7A7A">
-                Street Level/SGA Level
+                <CustomLabelTypography>
+                  Street Level/SGA Level
+                </CustomLabelTypography>
               </Grid>
-              <Grid item>11/11</Grid>
+              <Grid item>
+                <CustomInputTypography>11/11</CustomInputTypography>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sx={{ paddingTop: "2px !important" }}>
             <Grid container flexDirection="column">
               <Grid item color="#7A7A7A">
-                BA Level
+                <CustomLabelTypography>BA Level</CustomLabelTypography>
               </Grid>
-              <Grid item>19</Grid>
+              <Grid item>
+                <CustomInputTypography>19</CustomInputTypography>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sx={{ paddingTop: "2px !important" }}>
             <Grid container flexDirection="column">
               <Grid item color="#7A7A7A">
-                Upline
+                <CustomLabelTypography>Upline</CustomLabelTypography>
               </Grid>
-              <Grid item>Direct</Grid>
+              <Grid item>
+                <CustomInputTypography>Direct</CustomInputTypography>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sx={{ paddingTop: "2px !important" }}>
             <Grid container flexDirection="column">
               <Grid item color="#7A7A7A">
-                BA Appt Number
+                <CustomLabelTypography>BA Appt Number</CustomLabelTypography>
               </Grid>
-              <Grid item>Q262</Grid>
+              <Grid item>
+                <CustomInputTypography>Q262</CustomInputTypography>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sx={{ paddingTop: "2px !important" }}>
             <Grid container flexDirection="column">
-              <Grid item color="#7A7A7A">
-                Drive Folder
+              <Grid item color="#7A7A7A" xs={12}>
+                <CustomLabelTypography>Drive Folder</CustomLabelTypography>
               </Grid>
-              <Grid item color="#206FB9">
+              <Grid
+                item
+                color="#206FB9"
+                xs={12}
+                sx={{
+                  wordWrap: "break-word",
+                  fontFamily: "Nunito",
+                  fontStyle: "normal",
+                  fontWeight: "600",
+                  fontSize: "13px",
+                  lineHeight: "18px",
+                }}
+              >
                 https://drive.google.com/drive/folder/path
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-        <Grid container></Grid>
       </Grid>
     </Grid>
   </Grid>

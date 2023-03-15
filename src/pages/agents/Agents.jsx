@@ -511,7 +511,7 @@ const Agents = () => {
 
       {/* Navigation Section */}
       <Grid container justifyContent="space-between">
-        <Grid item xs={4}>
+        <Grid item lg={4}>
           <Typography variant="h3" gutterBottom display="inline">
             Agents
           </Typography>
@@ -523,8 +523,11 @@ const Agents = () => {
             <Typography>Agents</Typography>
           </Breadcrumbs>
         </Grid>
-        <Grid item xs={5} mt={4} direction="row">
-          <Grid container direction="row">
+        <Grid item xs={12} md={9} lg={5} mt={4} direction={"row"}>
+          <Grid
+            container
+            sx={{ justifyContent: { md: "flex-start", xs: "center" } }}
+          >
             <Grid item>
               <CheckboxesGroup />
             </Grid>
@@ -533,7 +536,7 @@ const Agents = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={2.8} mt={3}>
+        <Grid item xs={12} lg={2.8} mt={3}>
           <Grid container justifyContent="space-between">
             <Grid item>
               <Button
