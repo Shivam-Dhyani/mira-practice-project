@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Search } from "@mui/icons-material";
+import { Add, Search } from "@mui/icons-material";
 import {
   Breadcrumbs as MuiBreadcrumbs,
   Divider as MuiDivider,
@@ -15,6 +15,7 @@ import {
   Checkbox,
   Pagination,
   PaginationItem,
+  Button,
 } from "@mui/material";
 import { alpha, spacing } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
@@ -41,6 +42,7 @@ const CustomDataGrid = styled(DataGrid)`
     outline: none;
   }
 
+  ,
   .MuiDataGrid-iconSeparator,
   .MuiDataGrid-sortIcon {
     display: none;
@@ -165,17 +167,40 @@ function Checkboxes() {
   );
 }
 
+// function CustomPagination() {
+//   //   const page = useGridSelector(apiRef, gridPageSelector);
+
+//   return (
+//     <Pagination
+//       color="primary"
+//       variant="outlined"
+//       shape="rounded"
+//       page={1}
+//       count={8}
+//       // @ts-expect-error
+//       renderItem={(props2) => <PaginationItem {...props2} disableRipple />}
+//       // onChange={(event, value) => apiRef.current.setPage(value - 1)}
+//     />
+//   );
+// }
+
 const columns = [
   {
     headerName: "",
     width: 60,
   },
-  { field: "name", headerName: "Name", width: 230, sortable: "false" },
+  { field: "name", headerName: "Name", width: 600, sortable: "false" },
   {
     field: "type",
     headerName: "Type",
-    width: 1175,
+    width: 660,
     renderCell: (params) => <img src={params.value} />,
+  },
+  {
+    field: "carriers",
+    headerName: "# Carriers",
+    width: 140,
+    sortable: "false",
   },
   {
     field: "kebabMenuIcon",
@@ -192,72 +217,84 @@ const rows = [
     id: 1,
     name: "Shivam",
     type: LifeInsuranceChip,
+    carriers: "23",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 2,
     name: "Kaval Prajapati",
     type: AnnuityInsuranceChip,
+    carriers: "20",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 3,
     name: "Divyanshu Barot",
     type: LifeInsuranceChip,
+    carriers: "19",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 4,
     name: "Harshil Chudasama",
     type: AnnuityInsuranceChip,
+    carriers: "23",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 5,
     name: "Birud",
     type: LifeInsuranceChip,
+    carriers: "54",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 6,
     name: "Nikunj",
     type: AnnuityInsuranceChip,
+    carriers: "43",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 7,
     name: "Dhaval",
     type: LifeInsuranceChip,
+    carriers: "45",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 8,
     name: "Harsh",
     type: AnnuityInsuranceChip,
+    carriers: "65",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 9,
     name: "Mihir",
     type: LifeInsuranceChip,
+    carriers: "12",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 10,
     name: "Deep",
     type: AnnuityInsuranceChip,
+    carriers: "21",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 11,
     name: "Anand",
     type: LifeInsuranceChip,
+    carriers: "32",
     kebabMenuIcon: KebabMenuIcon,
   },
   {
     id: 12,
     name: "Nitin",
     type: AnnuityInsuranceChip,
+    carriers: "23",
     kebabMenuIcon: KebabMenuIcon,
   },
 ];
@@ -278,12 +315,16 @@ function DataGridDemo() {
         disableSorting
         hideFooterPagination
         hideFooter
+
+        // slots={{
+        //   pagination: CustomPagination,
+        // }}
       />
     </Box>
   );
 }
 
-const Carriers = () => {
+const Templates = () => {
   const navigate = useNavigate();
   return (
     <>
@@ -295,23 +336,31 @@ const Carriers = () => {
         justifyContent="space-between"
         sx={{ marginBottom: "15px" }}
       >
-        <Grid item lg={4}>
+        <Grid item lg={4.5}>
           <Typography variant="h3" gutterBottom display="inline">
-            Carriers
+            Templates
           </Typography>
         </Grid>
-        <Grid item lg={5} mt={4} direction="row">
+        <Grid item lg={4} mt={4} direction="row">
           <Grid container direction="row">
             <Grid item>
               <Checkboxes />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={2.6} mt={3}>
-          <Grid
-            container
-            sx={{ justifyContent: { xs: "center", md: "flex-end" } }}
-          >
+        <Grid item xs={12} md={3} mt={3}>
+          <Grid container sx={{ justifyContent: "space-between" }}>
+            <Grid item>
+              <Button
+                mr={2}
+                variant="contained"
+                color="primary"
+                onClick={() => navigate("addNewAgents")}
+              >
+                <Add />
+                New Template
+              </Button>
+            </Grid>
             <Grid item>
               <CustomTextField
                 placeholder="Search"
@@ -340,4 +389,4 @@ const Carriers = () => {
   );
 };
 
-export default Carriers;
+export default Templates;

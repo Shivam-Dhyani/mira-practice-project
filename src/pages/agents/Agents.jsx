@@ -38,6 +38,11 @@ const CustomDataGrid = styled(DataGrid)`
     background-color: #233044;
     color: white;
   }
+
+  .MuiDataGrid-cell:focus {
+    outline: none;
+  }
+
   .MuiDataGrid-iconSeparator,
   .MuiDataGrid-sortIcon {
     display: none;
@@ -510,18 +515,15 @@ const Agents = () => {
       <Helmet title="Agents" />
 
       {/* Navigation Section */}
-      <Grid container justifyContent="space-between">
+      <Grid
+        container
+        justifyContent="space-between"
+        sx={{ marginBottom: "15px" }}
+      >
         <Grid item lg={4}>
           <Typography variant="h3" gutterBottom display="inline">
             Agents
           </Typography>
-
-          <Breadcrumbs aria-label="Breadcrumb" mt={2}>
-            <Link component={NavLink} to="/">
-              Pages
-            </Link>
-            <Typography>Agents</Typography>
-          </Breadcrumbs>
         </Grid>
         <Grid item xs={12} md={9} lg={5} mt={4} direction={"row"}>
           <Grid

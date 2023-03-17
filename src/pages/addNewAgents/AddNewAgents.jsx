@@ -453,21 +453,15 @@ const AddNewAgents = () => {
       <Helmet title="Add New Agent" />
 
       {/* Navigation Section */}
-      <Grid container justifyContent="space-between">
+      <Grid
+        container
+        justifyContent="space-between"
+        sx={{ marginBottom: "15px" }}
+      >
         <Grid item xs={4}>
           <Typography variant="h3" gutterBottom display="inline">
             Agents
           </Typography>
-
-          <Breadcrumbs aria-label="Breadcrumb" mt={2}>
-            <Link component={NavLink} to="/">
-              Pages
-            </Link>
-            <Link component={NavLink} to="/agents">
-              Agents
-            </Link>
-            <Typography>Add New Agent</Typography>
-          </Breadcrumbs>
         </Grid>
       </Grid>
 

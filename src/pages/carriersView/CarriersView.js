@@ -300,7 +300,8 @@ const CarrierDetailSection = () => (
 const CarrierTableSection = () => <Grid item></Grid>;
 
 const CarriersView = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
   return (
     <>
       <Helmet title="Carriers" />
