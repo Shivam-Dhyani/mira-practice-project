@@ -538,7 +538,7 @@ const Agents = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={2.8} mt={3}>
+        <Grid item xs={12} lg={2.8}>
           <Grid container justifyContent="space-between">
             <Grid item>
               <Button

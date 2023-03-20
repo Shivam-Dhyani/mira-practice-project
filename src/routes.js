@@ -88,6 +88,7 @@ import AddNewAgents from "./pages/addNewAgents/AddNewAgents";
 import Carriers from "./pages/carriers/Carriers";
 import CarriersView from "./pages/carriersView/CarriersView";
 import Templates from "./pages/templates/Templates";
+import AddNewTemplate from "./pages/addNewTemplate/AddNewTemplate";
 
 // Dashboard components
 const Default = async(() => import("./pages/dashboards/Default"));
@@ -207,6 +208,10 @@ const routes = [
           {
             path: "",
             element: <Templates />,
+          },
+          {
+            path: "addNewTemplate",
+            element: <AddNewTemplate />,
           },
         ],
       },

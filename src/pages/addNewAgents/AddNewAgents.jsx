@@ -425,15 +425,7 @@ const TabsContainer = () => {
               width="100%"
             >
               <Grid item>
-                <Button
-                  mr={2}
-                  variant="contained"
-                  color="primary"
-                  sx={{ padding: "10px 25px" }}
-                >
-                  <Add />
-                  Add Carrier
-                </Button>
+                <SelectCarriersModal />
               </Grid>
             </Grid>
           </TabPanel>
