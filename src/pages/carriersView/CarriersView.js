@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Search } from "@mui/icons-material";
+import { ExpandMore, Search } from "@mui/icons-material";
 import {
   Breadcrumbs as MuiBreadcrumbs,
   Divider as MuiDivider,
@@ -8,6 +8,16 @@ import {
   Grid,
   TextField,
   InputAdornment,
+  AccordionDetails,
+  AccordionSummary,
+  Accordion,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Paper,
 } from "@mui/material";
 import { spacing } from "@mui/system";
 import { Helmet } from "react-helmet-async";
@@ -297,7 +307,380 @@ const CarrierDetailSection = () => (
   </Grid>
 );
 
-const CarrierTableSection = () => <Grid item></Grid>;
+const LevelTable = () => {
+  return (
+    <Grid item xs={12} textAlign="center">
+      <Grid container className="" sx={{ justifyContent: "center" }}>
+        <TableContainer
+          className=""
+          sx={{ minHeight: "50vh" }}
+          component={Paper}
+        >
+          <Table
+            className="templateCarrierTable"
+            aria-label="a dense table"
+            size="small"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell
+                  className="header-color sticky-table-head sticky-table-head-1"
+                  stickyHeader
+                >
+                  #
+                </TableCell>
+
+                <TableCell
+                  className="header-color sticky-table-head sticky-table-head-2"
+                  align="left"
+                  nowrap
+                  stickyHeader
+                >
+                  Carrier
+                </TableCell>
+
+                <TableCell
+                  className="header-color sticky-table-head sticky-table-head-3"
+                  align="left"
+                  nowrap
+                  stickyHeader
+                >
+                  BA Level
+                </TableCell>
+
+                <TableCell
+                  className="header-color sticky-table-head sticky-table-head-4"
+                  align="left"
+                  nowrap
+                  stickyHeader
+                >
+                  Direct Carrier
+                </TableCell>
+
+                {Array.from(10).map((rr, i) => {
+                  return (
+                    <TableCell
+                      key={i}
+                      className="font-color header-color"
+                      align="left"
+                    >
+                      DL
+                    </TableCell>
+                  );
+                })}
+
+                <TableCell
+                  className="header-color sticky-table-head sticky-table-head-5"
+                  align="left"
+                  nowrap
+                  stickyHeader
+                >
+                  {/* Delete Button Head */}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+
+            {/* <TableBody>
+              {selectedCarrier.map((row, i) => (
+                <TableRow
+                  key={row.name}
+                  className=""
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                  }}
+                >
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    className="sticky-table-body sticky-table-body-1"
+                    stickyHeader
+                  >
+                    {i + 1}
+                  </TableCell>
+
+                  <TableCell
+                    align="left"
+                    className="sticky-table-body sticky-table-body-2"
+                    stickyHeader
+                  >
+                    {row.carrier_name}
+                  </TableCell>
+
+                  <TableCell
+                    align="left"
+                    className="sticky-table-body sticky-table-body-3"
+                    stickyHeader
+                  >
+                    <FormControl m={2}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        className="ba-level"
+                        size="small"
+                        onChange={(e) => {
+                          if (e.target.value) {
+                            let filteredCarrier = [...selectedCarrier].map(
+                              (ff) => {
+                                if (
+                                  ff.carrier_types[0]["carrier_id"] ==
+                                  row.carrier_types[0].carrier_id
+                                ) {
+                                  ff["baLevel"] = e.target.value;
+                                }
+                                return ff;
+                              }
+                            );
+                            setSelectedCarrier(filteredCarrier);
+                          }
+                        }}
+                      >
+                        {BALevel.map((menu) => {
+                          if (
+                            menu.carrier_id == row.carrier_types[0].carrier_id
+                          ) {
+                            return menu?.carrier_level_data.map(
+                              (name, index) => (
+                                <MenuItem key={index} value={name}>
+                                  {name.carrier_level_name}
+                                </MenuItem>
+                              )
+                            );
+                          }
+                        })}
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell
+                    align="left"
+                    className="sticky-table-body sticky-table-body-4"
+                    stickyHeader
+                  >
+                    <FormControl m={2}>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        className="ba-level"
+                        size="small"
+                        // value={ }
+                        onChange={(e) => {
+                          if (e.target.value) {
+                            var filterdata = directLevel
+                              ?.filter(
+                                (rr) =>
+                                  rr.carrier_id ==
+                                  row.carrier_types[0].carrier_id
+                              )[0]
+                              ["carrier_level_data"].filter(
+                                (rr) =>
+                                  rr.carrier_level_sequence >
+                                  e.target.value.carrier_level_sequence
+                              );
+                            let filteredCarrier = [...selectedCarrier].map(
+                              (ff) => {
+                                if (
+                                  ff.carrier_types[0]["carrier_id"] ==
+                                  row.carrier_types[0].carrier_id
+                                ) {
+                                  ff["directCarrierSelectList"] = filterdata;
+                                  ff["directCarrier"] = e.target.value;
+                                }
+                                return ff;
+                              }
+                            );
+                            setSelectedCarrier(filteredCarrier);
+                          }
+                        }}
+                      >
+                        {directLevel?.map((menu) => {
+                          if (
+                            menu.carrier_id == row.carrier_types[0].carrier_id
+                          ) {
+                            return menu?.carrier_level_data.map(
+                              (name, index) => (
+                                <MenuItem key={index} value={name}>
+                                  {name.carrier_level_name}
+                                </MenuItem>
+                              )
+                            );
+                          }
+                        })}
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  
+                  {Array.from({ length: DLLength }).map((mm, j) => {
+                    return (
+                      <>
+                        <TableCell align="left">
+                          <FormControl m={2}>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              className="ba-level"
+                              size="small"
+                              value={
+                                row?.directCarrierSelectList[j]
+                                  ? row?.directCarrierSelectList[j]
+                                  : ""
+                              }
+                              onChange={(e) => {
+                                var findDownlineList =
+                                  row?.directCarrierSelectList.filter(
+                                    (rr) =>
+                                      rr.carrier_level_sequence >=
+                                      e.target.value.carrier_level_sequence
+                                  );
+                                var selectedDownlineList =
+                                  row?.directCarrierSelectList.filter(
+                                    (rr) =>
+                                      rr.carrier_level_sequence <
+                                      row?.directCarrierSelectList[j][
+                                        "carrier_level_sequence"
+                                      ]
+                                  );
+                                var finalConcatDownList =
+                                  selectedDownlineList.concat(findDownlineList);
+                                let filteredCarrier = [...selectedCarrier].map(
+                                  (ff) => {
+                                    if (
+                                      ff.carrier_types[0]["carrier_id"] ==
+                                      row.carrier_types[0].carrier_id
+                                    ) {
+                                      ff["directCarrierSelectList"] =
+                                        finalConcatDownList;
+                                    }
+                                    return ff;
+                                  }
+                                );
+                                setSelectedCarrier(filteredCarrier);
+                              }}
+                            >
+                              {directLevel?.map((menu) => {
+                                if (
+                                  menu.carrier_id ==
+                                  row.carrier_types[0].carrier_id
+                                ) {
+                                  return menu?.carrier_level_data.map(
+                                    (name, index) => {
+                                      if (
+                                        row?.directCarrier
+                                          ?.carrier_level_sequence <=
+                                        name.carrier_level_sequence
+                                      ) {
+                                        return (
+                                          <MenuItem key={index} value={name}>
+                                            {name.carrier_level_name}
+                                          </MenuItem>
+                                        );
+                                      }
+                                    }
+                                  );
+                                }
+                              })}
+                            </Select>
+                          </FormControl>
+                        </TableCell>
+                      </>
+                    );
+                  })}
+
+                  <TableCell className="sticky-table-body sticky-table-body-5">
+                    <DeleteMenu
+                      data={row}
+                      onClick={(e) => {
+                        console.log("setSelectedCarrierIdx", row.carrier_id);
+
+                        console.log("e.target.value", e.target.value);
+                        // setSelectedCarrierIdx(row.carrier_id);
+                      }}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody> */}
+          </Table>
+        </TableContainer>
+      </Grid>
+    </Grid>
+  );
+};
+const CustomAccordion = styled(Accordion)({
+  marginBottom: "20px !important",
+});
+
+const CarrierDetailsAccordian = () => {
+  return (
+    <CustomAccordion
+      defaultExpanded
+      sx={{
+        backgroundColor: "#EFEFF0",
+        borderRadius: "10px",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMore />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        sx={{ color: "#1565C0", fontWeight: "600" }}
+      >
+        Carrier Details
+      </AccordionSummary>
+      <AccordionDetails sx={{ marginTop: "-10px" }}>
+        <CarrierDetailSection />
+      </AccordionDetails>
+    </CustomAccordion>
+  );
+};
+
+const ResourcesAccordian = () => {
+  return (
+    <CustomAccordion
+      sx={{
+        backgroundColor: "#EFEFF0",
+        borderRadius: "10px",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMore />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        sx={{ color: "#1565C0", fontWeight: "600" }}
+      >
+        Resources
+      </AccordionSummary>
+      <AccordionDetails sx={{ marginTop: "-10px" }}>
+        <CarrierDetailSection />
+      </AccordionDetails>
+    </CustomAccordion>
+  );
+};
+
+const LevelsAccordian = () => {
+  return (
+    <CustomAccordion
+      defaultExpanded
+      sx={{
+        backgroundColor: "#EFEFF0",
+        borderRadius: "10px",
+        // maxWidth: "100% !important",
+      }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMore />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        sx={{ color: "#1565C0", fontWeight: "600" }}
+      >
+        Levels
+      </AccordionSummary>
+      <AccordionDetails sx={{}}>
+        <LevelTable />
+      </AccordionDetails>
+    </CustomAccordion>
+  );
+};
 
 const CarriersView = () => {
   // const navigate = useNavigate();
@@ -360,7 +743,6 @@ const CarriersView = () => {
           item
           xs={12}
           sx={{
-            height: "67vh",
             backgroundColor: "#FFFFFF",
             padding: "15px !important",
           }}
@@ -371,11 +753,20 @@ const CarriersView = () => {
               maxHeight: "100%",
             }}
           >
-            {/* Carrier Details Section */}
-            <CarrierDetailSection />
+            <Grid item xs={12}>
+              {/* Carrier Details Section */}
+              <CarrierDetailsAccordian />
+            </Grid>
 
-            {/* Carrier Table Section */}
-            <CarrierTableSection />
+            <Grid item xs={12}>
+              {/* Resources Section */}
+              <ResourcesAccordian />
+            </Grid>
+
+            <Grid item xs={12}>
+              {/* Levels Section */}
+              <LevelsAccordian />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
