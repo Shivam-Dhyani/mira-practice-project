@@ -18,16 +18,32 @@ import {
   TableCell,
   TableBody,
   Paper,
+  IconButton,
 } from "@mui/material";
+import "./CarriersView.css";
 import { spacing } from "@mui/system";
 import { Helmet } from "react-helmet-async";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import LifeInsuranceLogo from "../../assets/life-insurance-logo.png";
 import AnnuityInsuranceLogo from "../../assets/annuity-insurance-logo.png";
+import BackIcon from "../../assets/back-icon.png";
+import PdfIcon from "../../assets/pdf-icon.png";
+import DeleteIcon from "../../assets/delete-icon.png";
 
 const Divider = styled(MuiDivider)(spacing);
 
 const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
+
+const BackIconComponent = () => (
+  <img
+    src={BackIcon}
+    alt="Logo"
+    width="28px"
+    height="28px"
+    text-align="center"
+    justify-content="center"
+  />
+);
 
 const CustomTextField = styled(TextField)({
   backgroundColor: "#EFEFF0",
@@ -65,7 +81,7 @@ const CarrierDetailSection = () => (
       backgroundColor: "#EFEFF0",
       width: "99.5%",
       padding: "15px 20px",
-      borderRadius: "10px",
+      borderRadius: "7px",
     }}
   >
     <Grid container>
@@ -215,6 +231,7 @@ const CarrierDetailSection = () => (
           have.
         </Grid>
       </Grid>
+
       {/* Horizontal Line */}
       <Grid item xs={0.2}>
         <hr
@@ -226,6 +243,7 @@ const CarrierDetailSection = () => (
           }}
         />
       </Grid>
+
       {/* Right Column */}
       <Grid item xs={2.4}>
         <Grid
@@ -324,59 +342,85 @@ const LevelTable = () => {
             <TableHead>
               <TableRow>
                 <TableCell
-                  className="header-color sticky-table-head sticky-table-head-1"
-                  stickyHeader
+                  className="header-color"
+                  // stickyHeader
+                  width="2%"
                 >
-                  #
+                  <Grid item xs={2}>
+                    Types
+                  </Grid>
                 </TableCell>
 
                 <TableCell
-                  className="header-color sticky-table-head sticky-table-head-2"
+                  className="header-color"
                   align="left"
                   nowrap
-                  stickyHeader
+                  width="3%"
+
+                  // stickyHeader
                 >
-                  Carrier
+                  State
                 </TableCell>
 
                 <TableCell
-                  className="header-color sticky-table-head sticky-table-head-3"
+                  className="header-color"
                   align="left"
                   nowrap
                   stickyHeader
+                  width="5%"
                 >
-                  BA Level
+                  Product
                 </TableCell>
 
                 <TableCell
-                  className="header-color sticky-table-head sticky-table-head-4"
+                  className="header-color"
                   align="left"
                   nowrap
                   stickyHeader
+                  width="7%"
                 >
-                  Direct Carrier
+                  Sub Name
+                </TableCell>
+
+                <TableCell
+                  className="header-color"
+                  align="left"
+                  nowrap
+                  stickyHeader
+                  // width="10%"
+                >
+                  BA Total C
                 </TableCell>
 
                 {Array.from(10).map((rr, i) => {
                   return (
                     <TableCell
-                      key={i}
-                      className="font-color header-color"
+                      className="header-color"
                       align="left"
+                      nowrap
+                      stickyHeader
+                      // width="10%"
                     >
                       DL
                     </TableCell>
+                    // <TableCell
+                    //   key={i}
+                    //   className="font-color header-color"
+                    //   align="left"
+                    // >
+                    //   DL
+                    // </TableCell>
                   );
                 })}
 
-                <TableCell
-                  className="header-color sticky-table-head sticky-table-head-5"
+                {/* <TableCell
+                  className="header-color"
                   align="left"
                   nowrap
                   stickyHeader
                 >
-                  {/* Delete Button Head */}
-                </TableCell>
+                  
+                </TableCell>  */}
               </TableRow>
             </TableHead>
 
@@ -606,9 +650,78 @@ const LevelTable = () => {
     </Grid>
   );
 };
+
 const CustomAccordion = styled(Accordion)({
   marginBottom: "20px !important",
 });
+
+const fileData = [
+  { fileName: "File.pdf", date: "25-01-2023", size: "15MB" },
+  { fileName: "File1.pdf", date: "20-05-2023", size: "15MB" },
+  { fileName: "File2.pdf", date: "21-06-2023", size: "15MB" },
+  { fileName: "File3.pdf", date: "22-07-2023", size: "15MB" },
+  { fileName: "File4.pdf", date: "23-08-2023", size: "15MB" },
+  { fileName: "File5.pdf", date: "24-09-2023", size: "15MB" },
+  { fileName: "File6.pdf", date: "26-10-2023", size: "15MB" },
+  { fileName: "File7.pdf", date: "27-11-2023", size: "15MB" },
+  { fileName: "File8.pdf", date: "28-12-2023", size: "15MB" },
+];
+
+const ResourceSection = () => {
+  return (
+    <Grid container>
+      <Grid item xs={8}>
+        <Grid
+          container
+          flexDirection="row"
+          height="200px"
+          rowGap={2}
+          sx={{ overflow: "scroll" }}
+        >
+          {fileData.map((file) => {
+            return (
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  backgroundColor: "#FFFFFF",
+                  padding: "12px",
+                  borderRadius: "7px",
+                  marginRight: "15px",
+                }}
+              >
+                <Grid
+                  container
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <>
+                    <Grid item>
+                      <Grid container alignItems="center" columnGap={4}>
+                        <Grid item>
+                          <img src={PdfIcon} />
+                        </Grid>
+                        <Grid item>{file.fileName}</Grid>{" "}
+                        <Grid item>{file.date}</Grid>{" "}
+                        <Grid item>{file.size}</Grid>
+                      </Grid>
+                    </Grid>
+                    <Grid item>
+                      <img src={DeleteIcon} />
+                    </Grid>
+                  </>
+                </Grid>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Grid>
+      <Grid item xs={4} sx={{ backgroundColor: "#FFFFFF" }}>
+        File Upload Section
+      </Grid>
+    </Grid>
+  );
+};
 
 const CarrierDetailsAccordian = () => {
   return (
@@ -616,7 +729,7 @@ const CarrierDetailsAccordian = () => {
       defaultExpanded
       sx={{
         backgroundColor: "#EFEFF0",
-        borderRadius: "10px",
+        borderRadius: "7px",
       }}
     >
       <AccordionSummary
@@ -639,7 +752,7 @@ const ResourcesAccordian = () => {
     <CustomAccordion
       sx={{
         backgroundColor: "#EFEFF0",
-        borderRadius: "10px",
+        borderRadius: "7px",
       }}
     >
       <AccordionSummary
@@ -651,7 +764,7 @@ const ResourcesAccordian = () => {
         Resources
       </AccordionSummary>
       <AccordionDetails sx={{ marginTop: "-10px" }}>
-        <CarrierDetailSection />
+        <ResourceSection />
       </AccordionDetails>
     </CustomAccordion>
   );
@@ -663,7 +776,7 @@ const LevelsAccordian = () => {
       defaultExpanded
       sx={{
         backgroundColor: "#EFEFF0",
-        borderRadius: "10px",
+        borderRadius: "7px",
         // maxWidth: "100% !important",
       }}
     >
@@ -682,59 +795,49 @@ const LevelsAccordian = () => {
   );
 };
 
-const CarriersView = () => {
-  // const navigate = useNavigate();
+const CarrierView = () => {
+  const navigate = useNavigate();
 
   return (
     <>
       <Helmet title="Carriers" />
 
       {/* Navigation Section */}
-      <Grid container justifyContent="space-between">
-        <Grid item xs={4} color="#7A7A7A">
-          <Grid container columnGap={5}>
+      <Grid justifyContent="space-between" container alignItems="center" mb={5}>
+        <Grid item sx={{ textAlign: "center" }}>
+          <Grid container textAlign="center" align>
+            <Grid item>
+              <IconButton
+                sx={{ padding: "0px 10px 0px 0px" }}
+                onClick={() => navigate("/")}
+              >
+                <BackIconComponent />
+              </IconButton>
+            </Grid>
             <Grid item>
               <Typography variant="h3" gutterBottom display="inline">
                 AGLA
               </Typography>
-
-              <Breadcrumbs aria-label="Breadcrumb" mt={2}>
-                <Link component={NavLink} to="/">
-                  Pages
-                </Link>
-                <Link component={NavLink} to="carriers">
-                  Carriers
-                </Link>
-                <Typography>AGLA</Typography>
-              </Breadcrumbs>
-            </Grid>
-            <Grid item marginTop="20px">
-              <img
-                src={LifeInsuranceLogo}
-                alt="life-insurance"
-                fontSize="100px !important"
-              />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={2.6} mt={3}>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <CustomTextField
-                placeholder="Search"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Search />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-          </Grid>
+        <Grid item>
+          <TextField
+            id="outlined-select-currency"
+            select
+            // label="Select"
+            defaultValue="Current(15-02-2023)"
+            // helperText="Please select your currency"
+            sx={{ border: "white" }}
+          >
+            {/* {currencies.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))} */}
+          </TextField>
         </Grid>
       </Grid>
-
       <Divider my={2} mb={4} />
 
       {/* Carrier View Section */}
@@ -774,4 +877,4 @@ const CarriersView = () => {
   );
 };
 
-export default CarriersView;
+export default CarrierView;

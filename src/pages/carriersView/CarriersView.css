@@ -1,0 +1,78 @@
+.templateCarrierTable td,
+.templateCarrierTable th {
+  white-space: nowrap;
+}
+
+.carrier-table1 {
+  margin: 0px 2px !important;
+}
+
+.carrier-table2 {
+  margin: 0px 2px !important;
+}
+
+.ba-level .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+.carrier-table .MuiTableHead-root {
+  background-color: #1b2430 !important;
+  color: white !important;
+}
+
+.font-color {
+  color: white !important;
+}
+
+/* .sticky {
+    position: sticky;
+    left: 0;
+    background-color: white !important;
+    box-shadow: 5px 2px 5px grey;
+    min-width: 150px;
+
+} */
+
+.header-color {
+  background-color: #1b2430 !important;
+  color: white !important;
+}
+
+/* .static-table {
+  width: 70% !important;
+} */
+
+.sticky-table-head {
+  position: sticky !important;
+}
+
+.sticky-table-body {
+  position: sticky !important;
+  z-index: 99 !important;
+  background-color: white !important;
+}
+
+.sticky-table-head-1,
+.sticky-table-body-1 {
+  left: 0px !important;
+}
+
+.sticky-table-head-2,
+.sticky-table-body-2 {
+  left: 40px !important ;
+}
+
+.sticky-table-head-3,
+.sticky-table-body-3 {
+  left: 184px !important;
+}
+
+.sticky-table-head-4,
+.sticky-table-body-4 {
+  left: 270px !important;
+}
+
+.sticky-table-body-5,
+.sticky-table-head-5 {
+  right: 0px !important;
+}
