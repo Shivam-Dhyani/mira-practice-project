@@ -32,8 +32,6 @@ import DeleteIcon from "../../assets/delete-icon.png";
 
 const Divider = styled(MuiDivider)(spacing);
 
-const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
-
 const BackIconComponent = () => (
   <img
     src={BackIcon}
@@ -44,17 +42,6 @@ const BackIconComponent = () => (
     justify-content="center"
   />
 );
-
-const CustomTextField = styled(TextField)({
-  backgroundColor: "#EFEFF0",
-  width: "230px",
-  "& input": {
-    padding: "9px 16px",
-  },
-  "& fieldset": {
-    border: "none",
-  },
-});
 
 const CustomLabelTypography = styled(Typography)`
   font-family: "Nunito";
@@ -86,9 +73,9 @@ const CarrierDetailSection = () => (
   >
     <Grid container>
       {/* Left Column */}
-      <Grid item xs={9.4}>
+      <Grid item xs={12} lg={9.4}>
         <Grid container justifyContent="space-between" paddingRight={4}>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={5}>
             <Grid container>
               <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
@@ -169,7 +156,7 @@ const CarrierDetailSection = () => (
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={5}>
             <Grid container>
               <Grid item sx={{ width: "100%", padding: "5px 0" }}>
                 <Grid container>
@@ -245,7 +232,7 @@ const CarrierDetailSection = () => (
       </Grid>
 
       {/* Right Column */}
-      <Grid item xs={2.4}>
+      <Grid item xs={12} lg={2.4}>
         <Grid
           container
           color="#00345E"
@@ -670,7 +657,7 @@ const fileData = [
 const ResourceSection = () => {
   return (
     <Grid container>
-      <Grid item xs={8}>
+      <Grid item xs={12} md={8}>
         <Grid
           container
           flexDirection="row"
@@ -706,7 +693,7 @@ const ResourceSection = () => {
                         <Grid item>{file.size}</Grid>
                       </Grid>
                     </Grid>
-                    <Grid item>
+                    <Grid item sx={{ width: { xs: "10px", md: "20px" } }}>
                       <img src={DeleteIcon} />
                     </Grid>
                   </>
@@ -716,7 +703,7 @@ const ResourceSection = () => {
           })}
         </Grid>
       </Grid>
-      <Grid item xs={4} sx={{ backgroundColor: "#FFFFFF" }}>
+      <Grid item xs={12} md={4} sx={{ backgroundColor: "#FFFFFF" }}>
         File Upload Section
       </Grid>
     </Grid>
